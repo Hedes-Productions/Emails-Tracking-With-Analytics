@@ -1,5 +1,5 @@
 {
-  "name": "Analytics_Test_Emails",
+  "name": "emails_tracking_with_analytics",
   "version": "1.0.0",
   "description": "This is testing emails tracking with google analytics",
   "main": "server.js",
