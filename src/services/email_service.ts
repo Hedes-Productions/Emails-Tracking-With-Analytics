@@ -1,8 +1,9 @@
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 const path = require("path");
-const l = require("../../.env");
-const m = path.resolve(__dirname, "../../.env");
+const {htmlTemplate} = require("../templates/email_template");
+const env = path.resolve(__dirname, "../../.env");
+
 require("dotenv").config({ path: path.resolve(__dirname, "../../.env") });
 
 const CLIENT_ID = process.env.CLIENT_ID;
@@ -32,12 +33,13 @@ export const sendMail = async () => {
         accessToken: accessToken,
       },
     });
-
+    const templateHTML = htmlTemplate()
     const mailOptions = {
       from: "XCodeX <xcodexprojects@gmail.com>",
       to: "tharindugimras@gmail.com",
       subject: "Email sending is working",
-      text: "Email service from Analytics_Test_Emails is working",
+      // text: "Email service from Analytics_Test_Emails is working",
+      html:templateHTML
     };
 
     const result = await transport.sendMail(mailOptions);
