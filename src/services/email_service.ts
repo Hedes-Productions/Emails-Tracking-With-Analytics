@@ -36,12 +36,11 @@ export const sendMail = async () => {
     const templateHTML = htmlTemplate()
     const mailOptions = {
       from: "XCodeX <xcodexprojects@gmail.com>",
-      to: "tharindugimras@gmail.com",
+      to: "tharindu@gotradie.com.au",
       subject: "Email sending is working",
-      // text: "Email service from Analytics_Test_Emails is working",
       html:templateHTML
     };
-
+    console.log(templateHTML)
     const result = await transport.sendMail(mailOptions);
     return result;
   } catch (error) {

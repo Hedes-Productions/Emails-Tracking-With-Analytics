@@ -5,28 +5,31 @@ const env = path.resolve(__dirname, "../../.env");
 export const htmlTemplate = () => {
   const url = urlMaker();
 
-  return `<body>
-    <h1>Google Analytics Tracking Email</h1>
-    <img src=${url} width="1" height="1" style="display:none"/>
-</body>`;
+  return `
+  <!DOCTYPE html>
+  <html lang="en">
+    <body>
+        <h1>Google Analytics Tracking Email</h1>
+        <img src=${url} width="10" height="10"/>
+      </body>
+  </html>
+  `;
 };
-
 const urlMaker = () => {
-  let trackingID = process.env.FIREBASE_MEASUREMENT_ID;
+  let measurementId = process.env.FIREBASE_MEASUREMENT_ID;
+  let apiSecret = process.env.ANALYTICS_API_SECRET;
   let clientID = clientUUID();
   let emailSubject = "Example Email";
   let hitType = "event";
-  let eventCategory = "email";
-  let eventAction = "open";
-
-  // Build the Measurement Protocol URL
+  let eventCategory = "Email";
+  let eventAction = "Open";
+  let appID = process.env.FIREBASE_APP_ID;
   return (
-    "https://www.google-analytics.com/collect" +
-    "?v=1" +
-    "&tid=" +
-    trackingID +
-    "&cid=" +
-    clientID +
+    "https://www.google-analytics.com/mp/collect?" +
+    "firebase_app_id=" +
+    appID +
+    "&api_secret=" +
+    apiSecret +
     "&t=" +
     hitType +
     "&ec=" +
@@ -34,6 +37,8 @@ const urlMaker = () => {
     "&ea=" +
     eventAction +
     "&el=" +
-    encodeURIComponent(emailSubject)
+    encodeURIComponent(emailSubject) +
+    "&uid=" +
+    clientID
   );
 };
