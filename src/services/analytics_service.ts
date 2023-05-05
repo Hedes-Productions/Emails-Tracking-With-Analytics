@@ -12,7 +12,6 @@ export const logEvent = async (params: logEventType) => {
   const { clientId, eventName, parameters } = params;
   const measurement_id = process.env.FIREBASE_MEASUREMENT_ID;
   const api_secret = process.env.ANALYTICS_API_SECRET;
-
   const res = await fetch(
     `https://www.google-analytics.com/mp/collect?measurement_id=${measurement_id}&api_secret=${api_secret}`,
     {
@@ -22,6 +21,7 @@ export const logEvent = async (params: logEventType) => {
         events: [
           {
             name: eventName,
+            params: parameters,
           },
         ],
       }),

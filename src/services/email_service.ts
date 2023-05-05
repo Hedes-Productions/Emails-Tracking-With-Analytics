@@ -40,7 +40,6 @@ export const sendMail = async () => {
       subject: "Email sending is working",
       html:templateHTML
     };
-    console.log(templateHTML)
     const result = await transport.sendMail(mailOptions);
     return result;
   } catch (error) {
