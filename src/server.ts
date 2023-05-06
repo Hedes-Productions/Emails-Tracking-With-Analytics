@@ -21,7 +21,6 @@ app.get("/", (req: any, res: any) => {
 
 app.get("/sendEmail", (req: any, res: any) => {
   sendMail().then((result) => {
-    console.log(result)
     const logEventData = {
       clientId: "1234",
       eventName: "email_sent",
