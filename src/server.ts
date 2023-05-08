@@ -19,6 +19,7 @@ app.get("/", (req: any, res: any) => {
   res.send(`Server running at ${PORT}`);
 });
 
+// This is the endpoint to send emails
 app.get("/sendEmail", (req: any, res: any) => {
   sendMail().then((result) => {
     const logEventData = {
