@@ -23,6 +23,14 @@ export const logEvent = async (params: logEventType) => {
             name: eventName,
             params: parameters,
           },
+          {
+            name: 'test_event',
+            params: parameters,
+          },
+          {
+            name: 'test_event1',
+            params: parameters,
+          }
         ],
       }),
     }

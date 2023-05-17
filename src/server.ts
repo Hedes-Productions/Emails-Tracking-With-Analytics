@@ -9,7 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
   console.log(`Server is running at ${PORT}`);
@@ -28,7 +28,7 @@ app.get("/sendEmail", (req: any, res: any) => {
       parameters: {
         result: "email_success",
         emailID: result.messageId,
-        clientEmail: result.envelope.to[0],
+        // clientEmail: result.envelope.to[0],
       },
     };
     logEvent(logEventData);
